@@ -13,6 +13,7 @@ import { ParcelarEmPipe } from './pipes/parcelar-em.pipe';
 import { FormsModule } from '@angular/forms';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
