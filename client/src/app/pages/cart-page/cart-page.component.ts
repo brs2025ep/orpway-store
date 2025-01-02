@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item.model';
-import { CatalogProduct, sampleProducts } from 'src/app/models/catalog-product.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -10,7 +9,6 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartPageComponent {
   
-  products: CatalogProduct[] = sampleProducts;
 
   // (TODO) : Implement cartService
   
@@ -33,7 +31,6 @@ export class CartPageComponent {
     } else {
       return `Nada`;
     }
-
   }
 
   removeProduct(productId: number): void {

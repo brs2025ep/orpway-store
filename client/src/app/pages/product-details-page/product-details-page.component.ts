@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { CartService } from 'src/app/services/cart.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-product-details-page',
@@ -17,7 +18,9 @@ export class ProductDetailsPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private mercadoriasService: ProductsService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private notificationService: NotificationService,
+  ) { }
 
   ngOnInit(): void {     
      const routeParameters = this.route.snapshot.paramMap;
@@ -25,14 +28,12 @@ export class ProductDetailsPageComponent implements OnInit {
      this.mercadoria = this.mercadoriasService.getById(Number(productId)); 
   }
 
-  addToCart(id: number | undefined): void {
-    console.log(`Product with id : ${id} was added to cart!`);
+  addToCart(id: number | undefined, quantityValue: string): void {
     const mercadoria : CartItem = {
      ...this.mercadoria!,
-      quantity: 1
+      quantity: parseInt(quantityValue, 10),
     }
 
-    console.log("--Product being sent to cart")
     this.cartService.addToCart(mercadoria);
     } 
 
