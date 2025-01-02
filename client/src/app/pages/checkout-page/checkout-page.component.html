@@ -1,0 +1,21 @@
+<div class="payment">
+    <h2>Pagamento</h2>
+    <p>Total</p>
+    <p>{{ getTotalPrice() | currency:'BRL'}}</p>
+    <label for="parcelamento">Pague à vista ou parcele em até 12 vezes com juros</label>
+    <select id="parcelamento" name="parcelas">  
+        <option value="">Escolha a quantidade de parcelas</option>
+        <option value="2">{{ 1000| parcelarEm : 2 }}</option>
+        <option value="3">{{ 1000| parcelarEm : 3 }}</option>
+        <option value="4">{{ 1000| parcelarEm : 4 }}</option>
+        <option value="5">{{ 1000| parcelarEm : 5 }}</option>
+        <option value="6">{{ 1000| parcelarEm : 6 }}</option>
+        <option value="7">{{ 1000| parcelarEm : 7 }}</option>
+        <option value="8">{{ 1000| parcelarEm : 8 }}</option>
+        <option value="9">{{ 1000| parcelarEm : 9 }}</option>
+        <option value="10">{{ 1000| parcelarEm : 10 }}</option>
+        <option value="11">{{ 1000| parcelarEm : 11 }}</option>
+        <option value="12">{{ 1000| parcelarEm : 12 }}</option>
+    </select>
+    <button type="button">Comprar</button>
+</div>

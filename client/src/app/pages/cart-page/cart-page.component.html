@@ -1,0 +1,23 @@
+<div class="cart-list">
+    <p *ngIf="cartItems.length == 0">O carrinho de compras está vazio</p>
+    <div class="cart-item-card" *ngFor="let product of cartItems; let i = index">
+        <div class="row">
+            <div class="cart-item-thumbnail">
+                <a class="product-link" routerLink="/products/{{ product.id }}">
+                    <img src="{{ product.imageUrl }}" width="80px" height="80px" alt="{{ product.name}}">
+                </a>
+            </div>
+            <div class="cart-item-info">
+                <a class="product-link" routerLink="/products/{{ product.id }}">
+                    <h2 class="product-name">{{ product.name | uppercase }}</h2>
+                </a>
+                <p class="product-description">{{ product.description }}</p>
+                <p>PRODUCT CODE: {{ product.id }}</p>
+                <label for="quantidade">Quantity</label>
+                <input type="number" name="quantidade" min="0" max="{{ product.stock }}" value="{{ product.quantity }}" #quantityInput (input)="onQuantityChange(quantityInput.value, product)">
+                <p class="product-price"  id="subtotal-info-{{i}}">{{ getSubtotalText(product, quantityInput.value) }}</p>
+                <button class="remove-from-cart-button" type="button" (click)="removeProduct(product.id)" [style.display]="quantityInput.value === '0' ? 'block' : 'none'">Remover</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 10px;
+  
+      section, 
+      address {
+        margin: 0 auto;
+      }
+    }
+  
+    address {
+      margin-top: 20px;
+    }
+  }
+  
