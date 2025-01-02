@@ -1,0 +1,9 @@
+<section class="container">
+    <h2>{{ mercadoria?.description | uppercase }}</h2>
+    <img [src]="mercadoria?.imageUrl" alt="404"/>
+    <p>Price: {{ mercadoria?.price | currency: 'BRL' }}</p>
+    <label for="quantidade">Quantity</label>
+    <input type="number" name="quantidade" min="1" max="{{ mercadoria?.stock }}" value="1">
+    <p>Stock: {{ mercadoria?.stock }} units available</p>
+    <button class="add-to-cart-button" type="button" (click)="addToCart(mercadoria?.id)">Add to cart</button>
+</section>

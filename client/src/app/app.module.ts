@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { ContactPageComponent } from './contact-page/contact-page.component';
-import { ProductPageComponent } from './product-page/product-page.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { CartSummaryPageComponent } from './pages/cart-summary-page/cart-summary-page.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { ParcelarEmPipe } from './pipes/parcelar-em.pipe';
 import { FormsModule } from '@angular/forms';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    CheckoutComponent,
+    CartSummaryPageComponent,
     ContactPageComponent,
-    ProductPageComponent,
-    ParcelarEmPipe
+    ProductDetailsPageComponent,
+    ParcelarEmPipe,
+    CartPageComponent,
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,

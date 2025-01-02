@@ -1,9 +1,0 @@
-<section class="container">
-    <h2>{{ product?.description | uppercase }}</h2>
-    <img [src]="product?.imageUrl" alt="404"/>
-    <p>À vista por {{ product?.price | currency: 'BRL' }}</p>
-    <p>Quantidade:</p>
-    <input type="number" name="quantidade" min="1" max="100" value="1">
-    <p>100 unidades em estoque</p>
-    <button class="add-to-cart-button" type="button" (click)="addToCart(1)">Add to cart</button>
-</section>
