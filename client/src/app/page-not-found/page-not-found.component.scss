@@ -1,0 +1,22 @@
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+  }
+  
+  .container img {
+    width: 200px;
+  }
+  
+  .container h2 {
+    font-size: 32px;
+    margin-top: 20px;
+  }
+  
+  .container p {
+    font-size: 16px;
+    margin-top: 10x;
+  }

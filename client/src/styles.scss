@@ -1,0 +1,121 @@
+$primary-color: lighten(black, 20%);
+
+$tertiary-bg-color: #EBC34F;
+
+$header-bg-color: #2273ff;
+$footer-bg-color: #ebebeb;
+
+
+header {
+  font-family: Arial, sans-serif;
+  background-color: $header-bg-color;
+  padding: 20px;
+
+  .store-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+
+    span:first-child {
+      cursor: pointer;
+      color: $primary-color;
+    }
+
+    span:last-child {
+      cursor: pointer;
+      color: $tertiary-bg-color
+    }
+  }
+
+  nav {
+    ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+      li {
+        margin: 0 15px;
+        
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          color: $primary-color;
+          background-color: $tertiary-bg-color;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease, color 0.3s ease;
+          
+          &:hover {
+            background-color: darken($tertiary-bg-color, 20%);
+            color: white;
+          }
+
+          &:focus,
+          &:hover {
+            transform: translateY(-3px);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+footer {
+  background-color: $footer-bg-color;
+  color: $primary-color;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+
+    section,
+    address {
+      h2.footer-header {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      p,
+      ul {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    section {
+      grid-column: 1;
+    }
+
+    address {
+      grid-column: 3;
+    }
+  }
+
+  
+  .footer-copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+}
+
+// Container para Página 404 e Detahes do Produto
