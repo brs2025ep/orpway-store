@@ -12,7 +12,7 @@
                     <h2 class="product-name">{{ product.name | uppercase }}</h2>
                 </a>
                 <p class="product-description">{{ product.description }}</p>
-                <p>PRODUCT CODE: {{ product.id }} - {{ product.quantity }}</p>
+                <p>PRODUCT CODE: {{ product.id }}</p>
                 <label for="quantidade">Quantity</label>
                 <input type="number" name="quantidade" min="0" max="{{ product.stock }}" value="{{ product.quantity }}" #quantityInput (input)="onQuantityChange(quantityInput.value, product)">
                 <p class="product-price"  id="subtotal-info-{{i}}">{{ getSubtotalText(product, quantityInput.value) }}</p>

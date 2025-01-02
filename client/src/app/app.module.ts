@@ -15,6 +15,8 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CartCounterComponent } from './components/cart-counter/cart-counter.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProductDetailsPageComponent,
     ParcelarEmPipe,
     CartPageComponent,
-    CheckoutPageComponent
+    CheckoutPageComponent,
+    CartCounterComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

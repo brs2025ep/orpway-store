@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { CartService } from 'src/app/services/cart.service';
-import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-product-details-page',
@@ -19,7 +18,6 @@ export class ProductDetailsPageComponent implements OnInit {
     private route: ActivatedRoute,
     private mercadoriasService: ProductsService,
     private cartService: CartService,
-    private notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {     

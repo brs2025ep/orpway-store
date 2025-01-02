@@ -9,16 +9,12 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartPageComponent {
   
-
-  // (TODO) : Implement cartService
-  
   constructor( private cartService: CartService ) { }
-  
   cartItems: CartItem[] = this.cartService.items;
 
   onQuantityChange(value: string, product: any): void {
     let quantity = parseInt(value, 10) || 0;
-    // Update quantity
+    // Update cart quantity
     }
 
   getSubtotalText(product: any, quantityInput: string): string {

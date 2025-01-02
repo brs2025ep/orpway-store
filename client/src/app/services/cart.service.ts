@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../models/cart-item.model';
 import { NotificationService } from './notification.service';
+import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,16 @@ export class CartService {
 
   constructor(
     private notificationService: NotificationService,
+    private inventory: ProductsService,
   ) { }
 
+  getAll(): CartItem[] {
+    return this.items;
+  }
+
+  getCartSize() : number {
+    return this.items.length;
+  }
   getCartFromLocalStorage(): void {
     const cart = localStorage.getItem('cart');
     if (cart) {
@@ -19,28 +28,26 @@ export class CartService {
     }
   }
 
-  getStock(cartItem:CartItem): number {
-    return cartItem.stock;
-  }
-
   addToCart(newCartItem: CartItem): void {
+    let itemQuantity = newCartItem.quantity;
+    let itemId = newCartItem.id;
     if(newCartItem) {
-      const existingCartItem = this.items.find(item => item.id === newCartItem.id);
-
-      if (existingCartItem?.stock) {
-        if (existingCartItem.stock >= newCartItem.quantity) {
-          existingCartItem.stock -= newCartItem.quantity;
-          existingCartItem.quantity += newCartItem.quantity;
-          this.notificationService.notify('More ' + newCartItem.quantity + ' units added to the Cart !');
-        } else {
-          this.notificationService.notify('Product has insuficient stock!');
-          return;
+      let productStock = this.inventory.getStock(itemId);
+      if (productStock >= itemQuantity) {
+        const isCartItem = this.items.some(item => item.id === itemId);
+        if (!isCartItem) {
+          this.items.push(newCartItem);
+          this.inventory.increaseStock(itemId, -itemQuantity);
+          this.notificationService.notify('New product added to the Cart !');
+        } else if (isCartItem) {
+          this.items.find(item => item.id === itemId)!.quantity += itemQuantity;
+          this.inventory.increaseStock(itemId, -itemQuantity);
+          this.notificationService.notify('More ' + itemQuantity + ' units added to the Cart !');
         }
+        localStorage.setItem('cart', JSON.stringify(this.items));
       } else {
-        this.items.push(newCartItem);
-        this.notificationService.notify('New product added to the Cart !');
+        this.notificationService.notify('Product has insuficient stock!');
       }
-      localStorage.setItem('cart', JSON.stringify(this.items));
 
     } else {
       this.notificationService.notify('Error: invalid CartItem !');
