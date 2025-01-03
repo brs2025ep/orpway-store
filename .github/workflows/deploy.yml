@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up secret
+        run: echo "PROJECT_ACESS_SECRET=${{ secrets.PROJECT_ACESS_SECRET }}" >> $GITHUB_ENV
+
+      - name: Build Docker Image
+        run: |
+          docker build -t angular-app .
+      
+      - name: Run Docker container
+        run: |
+          docker run --rm -v $(pwd)/docs:/app/docs angular-app
+
+      # Configurar o Git para commit
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+      
+      - name: Commit and Push to GitHub Pages
+        run: |
+          git add docs/*
+          git commit -m "Deploy to GitHub Pages"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Usar o token padrão do GitHub Actions
