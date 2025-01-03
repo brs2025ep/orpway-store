@@ -8,11 +8,11 @@ RUN npm ci --omit=dev
 
 # Install the Angular CLI
 RUN npm install -g @angular/cli@13
-RUN npm ci --omit=dev
+RUN npm ci
 
 COPY . .
 
-RUN npm run build --prod --configuration production
+RUN npm run build --configuration production
 
 FROM nginx:alpine
 

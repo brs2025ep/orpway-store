@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "build:local": "ng build --base-href='/' --output-path=docs",
     "build:prod": "ng build --base-href='/orpway-store/' --output-path=docs",
     "watch": "ng build --watch --configuration development",
